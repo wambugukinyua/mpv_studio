@@ -11,6 +11,9 @@ on:
       - main
       - master
 
+permissions:
+  contents: read
+
 jobs:
   build-armv7-apk:
     runs-on: ubuntu-latest
