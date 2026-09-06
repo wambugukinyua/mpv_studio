@@ -34,6 +34,9 @@ jobs:
 
       - name: Build Windows executable
         run: flutter build windows --release -v
+        env:
+          CL: "/D_SILENCE_EXPERIMENTAL_COROUTINE_DEPRECATION_WARNINGS"
+          _CL_: "/D_SILENCE_EXPERIMENTAL_COROUTINE_DEPRECATION_WARNINGS"
 
       - name: Upload Windows release artifact
         uses: actions/upload-artifact@v4
