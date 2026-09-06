@@ -103,6 +103,9 @@ class _SessionGroupState extends State<SessionGroup> {
   // that subset. Reorder them, then rebuild [_shown] as the reordered supported
   // actions followed by the (un-rendered, order-irrelevant) unsupported ones.
   void _reorder(int oldIndex, int newIndex) {
+    if (oldIndex < newIndex) {
+      newIndex -= 1;
+    }
     setState(() {
       final sup = _shownSupported;
       sup.insert(newIndex, sup.removeAt(oldIndex));
@@ -272,7 +275,7 @@ class _SessionGroupState extends State<SessionGroup> {
       physics: const NeverScrollableScrollPhysics(),
       buildDefaultDragHandles: false,
       padding: EdgeInsets.zero,
-      onReorderItem: _reorder,
+      onReorder: _reorder,
       children: [
         for (var i = 0; i < shown.length; i++)
           _ShownTile(

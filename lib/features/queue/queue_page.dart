@@ -130,9 +130,10 @@ class _QueuePageState extends State<QueuePage> {
                     // one (which crowded the remove button) is turned off.
                     buildDefaultDragHandles: false,
                     itemCount: playlist.items.length,
-                    // onReorderItem already adjusts newIndex for the
-                    // item removed at oldIndex.
-                    onReorderItem: (oldIndex, newIndex) {
+                    onReorder: (oldIndex, newIndex) {
+                      if (oldIndex < newIndex) {
+                        newIndex -= 1;
+                      }
                       if (newIndex != oldIndex) {
                         _player.move(oldIndex, newIndex);
                       }
