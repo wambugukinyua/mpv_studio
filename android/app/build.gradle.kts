@@ -5,7 +5,6 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
-@Suppress("DEPRECATION")
 android {
     namespace = "studio.mpv.mpv_studio"
     compileSdk = flutter.compileSdkVersion
